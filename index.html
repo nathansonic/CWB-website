@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>COIN WORKBENCH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- 
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="bootstrap-table-master/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+    <script src="bootstrap-table-master/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    
+</head>
+    
+<body>
+    
+<div id="wrapper">
+  
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <a class="navbar-brand" href="">CWB</a>
+    </div>
+    <div id="navbar3" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#traded">Coins</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#alerts">Alerts/Stops</a></li>
+        <li><a href="#journal">Journal</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Bug Reports</a></li>
+            <li><a href="#">Guide</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="nav_icons">
+        <li class="nav_icon no_user" title="Settings">
+          <a class="nav-link" href="#settings"><i class="fa fa-cog" id="main_settings" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav_icon no_user" title="User">
+          <a class="nav-link" href="#user"><i class="fa fa-user" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav_icon has_user" title="Log In / Sign Up">
+          <a class="nav-link" href="#index"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+</nav>  
+
+<div id="main_page">
+  
+    <!-- ERROR MODAL
+    <div id="error_dialog" title="You fucked up">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The only way out of this is to delete everything off your computer</p>
+    </div>
+    -->
+  
+    <!-- OVERVIEW -->
+    <div class="data_row" id="overview">
+    <div class="inner_data_column">
+      
+      <div class="data_title">
+        <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> Overview</div>
+        <form><fieldset>
+          <label for="select_api">Select Account (API)</label>
+          <select name="select_api" id="select_api" class="yellow_inputs">
+            <option selected="selected">Main Acc - vAVnvew8w3yu8yfo2i3h</option>
+            <option>Dollar Acc - aAjfAvRmvarEAMSdkf</option>
+            <option>High Risk - aFnvnRRx6hhfFbDyi8wSp</option>
+          </select>
+        </fieldset></form>
+        <div id="date_picker">
+          <label for="from" class="green_text">Period From </label>
+          <input class="yellow_inputs" type="text" id="from" name="from">
+          <label for="to" class="red_text">to</label>
+          <input class="yellow_inputs" type="text" id="to" name="to">
+        </div>
+        <div>Total Increase: 0 - 100</div>
+      </div>
+      
+      <div class="data_main_bit data_main_bit_column">
+        <div id="overview_data_dots">
+        <div class="graph_container">
+          <div class="circle green"><div>1.56</div></div>
+          <div class="graph_title">Total Profit</div>
+        </div>
+        <div class="graph_container">
+          <div class="circle green"><div>56%</div></div>
+          <div class="graph_title">Profit Increase</div>
+        </div>
+        <div class="graph_container">
+          <div class="circle red"><div>0.32</div></div>
+          <div class="graph_title">Profit Factor</div>
+        </div>
+        <div class="graph_container" id="graph_3">
+          <div class="circle red"><div>0.11</div></div>
+          <div class="graph_title">Gross Profit/Loss</div>
+        </div>
+        <div class="graph_container">
+          <div class="circle green"><div>4.34%</div></div>
+          <div class="graph_title">24hr Average</div>
+        </div>
+        </div>
+        
+        <div class="data_main_bit_column" id="overview_graph"><img src="https://c5.staticflickr.com/1/645/31765060380_ba929fde47_b.jpg" width="1024" height="241" alt="A graph"></div>
+      </div>
+      </div>
+  </div> <!-- END OVERVIEW ROW-->
+  
+    <!-- COINS TRADED -->
+    <div class="data_row" id="traded">
+    <div class="inner_data_column">
+      
+      <div class="data_title">
+        <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> Coins Traded During Period</div>
+      </div>
+
+      <div class="data_main_bit data_main_bit_row">
+        <div class="table_container">
+        <!--Table -->
+        <table id="coins_traded_table"
+               data-search="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-classes="table table-no-bordered">
+        <thead>
+        <tr>
+          <th data-field="coin" data-switchable="false">Coin</th>
+          <th data-field="bal">Current Bal.</th>
+          <th data-field="bal_fiat" data-formatter="currencyFormat">in Fiat</th>
+          <th data-field="profit_fct">Profit Factor</th>
+          <th data-field="gross_profit" data-formatter="currencyFormat">Gross Profit</th>
+          <th data-field="gross_profit_perc" data-formatter="percentageFormat">as %</th>
+          <th data-field="gross_loss" data-formatter="currencyFormat">Gross Loss</th>
+          <th data-field="gross_loss_perc" data-formatter="percentageFormat">as %</th>
+          <th data-field="max_neg" data-formatter="currencyFormat">Max -ve Bal</th>
+          <th data-field="max_neg_perc" data-formatter="percentageFormat">as %</th>
+          <th data-field="biggest_win" data-formatter="currencyFormat">Biggest Win</th>
+          <th data-field="biggest_loss" data-formatter="currencyFormat">Biggest Loss</th>
+          <th data-field="num_winners">Num Winners</th>
+          <th data-field="num_losers">Num Losers</th>
+        </tr>
+        </thead>
+        </table>
+        </div>
+      </div>
+  </div>
+  </div> <!-- END TRADED ROW -->
+    
+    <!-- TOOLS: RISK CALC -->
+    <div class="data_row" id="tools">
+    
+    <div class="inner_data_column">
+
+      <div class="data_title" id="risk_calc_title">
+        <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> Risk Calculator</div>
+      </div>
+
+      <div class="data_main_bit" id="risk_calc_inputs">  
+        <input type="text" id="total_bal"/>Total Account Balance
+        <input type="text" id="risk_perc"/>Risk Percentage
+        <input type="text" id="stop_perc"/>Stoploss Percentage
+        <hr>
+        <div id="risk_summary">
+          Amount to Buy: <span id="buy_amt">0</span> BTC worth. <!-- Could put an approx amount of intended currency -->
+          <br> This means you are risking about <span id="risk_amt">0</span> BTC per trade 
+          <br> And you can take <span id="kill_amt">∞</span> losses at this value until you kill your account
+        </div>
+      </div>
+
+    </div>
+    </div><!-- END TOOLS ROW -->
+  
+    <!-- ALERTS -->
+    <div class="data_row" id="alerts">
+    
+    <div class="inner_data_column">
+      
+      <div class="data_title" id="alerts_title">
+        <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> ALERTS</div>
+      </div>
+    
+    <div class="data_main_bit data_main_bit_row" id="alerts_data">
+        <div>COMING SOON!</div>
+    </div>
+    
+    </div> 
+    </div><!-- END ALERTS ROW -->
+    
+    <!-- STOPS -->
+    <div class="data_row" id="stops">
+        
+    <div class="inner_data_column">
+      
+      <div class="data_title" id="stops_title">
+        <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> STOPS</div>
+      </div>
+
+      <div class="data_main_bit data_main_bit_row" id="stops_data">
+        <div>COMING SOON!</div>
+        <!-- <div class="table_container">
+        <table id="stops_table"
+               data-search="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-classes="table table-no-bordered">
+        <thead>
+          <tr>
+            <th data-field="coin" data-switchable="false">Coin</th>
+            <th data-field="type">Type</th>
+            <th data-field="stop_at">Stop @</th>
+            <th data-field="current">Current</th>
+            <th data-field="change_24hrs">Change 24hrs</th>
+            <th data-field="balance">Balance</th>
+            <th data-field="sell">Sell</th>
+            <th data-field="start_at">Start @</th>
+          </tr>
+        </thead>
+        </table>
+        </div> -->
+      </div>
+
+    </div> 
+  </div> <!-- END STOPS ROW -->
+    
+    <!-- COIN JOURNAL -->
+    <div class="data_row" id="journal">
+        
+    <div class="inner_data_column">
+        <div class="data_title">
+            <div class="row_title"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> Coin Journal</div>
+        </div>
+    
+        <div class="data_main_bit data_main_bit_row" id="alerts_data">
+            <div>COMING SOON!</div>
+        </div>
+    </div>
+    
+    </div><!-- END COIN JOURNAL ROW -->
+
+  
+</div> <!-- END MAIN PAGE -->
+
+<div id="footer" class="data_row">
+  
+  <div id="footer_links">
+    <div>Contact: Mark and Nathan at
+      <a href="#" title="Contact">hardworkers@kool-duuds.com</a>
+    </div>
+  </div>
+  
+  <div id="footer_blurb">
+    <div>Coin Workbench has been supplied for free by Mark and Nathan. </div>
+    <div>donate 
+      <span>ETH: 0x9fE6591D285A3F18f019A6D12537D12A176C0a9f</span>
+      <span> BTC: 174tNAWzJRovxwakVHscncq4t1vrzZPq92</span></div>
+    <div>or any shapeshift supported coin</div>
+  </div>
+    
+</div> <!-- END FOOTER -->
+  
+</div> <!-- END WRAPPER -->    
+    
+</body>
+</html>
